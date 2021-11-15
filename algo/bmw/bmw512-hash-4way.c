@@ -1029,7 +1029,7 @@ void compress_big_8way(const __m512i *M, const __m512i H[16], __m512i dH[16]) {
 
   __m512i mj[16];
   for (i = 0; i < 16; i++)
-    mj[i] = rol8w_off_64(M, i);
+    mj[i] = mm512_rol_64(M[(j)&0xF], ((j)&0xF) + 1);
 
   qt[16] =
       add_elt_b8(mj[0], mj[3], mj[10], H[7],
