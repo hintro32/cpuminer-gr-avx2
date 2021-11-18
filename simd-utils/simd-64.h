@@ -86,8 +86,8 @@
     _mm_shuffle_pi8( v, (__m64)0x0607040502030001 );
 
 // Rotate right by c bytes
-static inline __m64 mm64_vror_x8( __m64 v, const int c )
-{ return _mm_alignr_pi8( v, v, c ); }
+// static inline __m64 mm64_vror_x8( __m64 v, const int c )
+// { return _mm_alignr_pi8( v, v, c ); }
 
 #else
 

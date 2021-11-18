@@ -100,6 +100,14 @@ union u32 {
 #define v8_mergel(a,b) V816(__builtin_ia32_punpcklbw128(a,b))
 #define v8_mergeh(a,b) V816(__builtin_ia32_punpckhbw128(a,b))
 
+#if defined(__clang__)
+#define __builtin_ia32_pcmpgtw128 _mm_cmpgt_epi32
+#define __builtin_ia32_punpcklwd128 _mm_unpacklo_epi16
+#define __builtin_ia32_punpckhwd128 _mm_unpackhi_epi16
+#define __builtin_ia32_punpcklbw128 _mm_unpacklo_epi8
+#define __builtin_ia32_punpckhbw128 _mm_unpackhi_epi8
+#endif
+
 #define v32_shift_l  __builtin_ia32_pslldi128
 #define v32_shift_r  __builtin_ia32_psrldi128
 

@@ -408,8 +408,10 @@ static inline void memcpy_256( __m256i *dst, const __m256i *src, const int n )
 #define mm256_shuflr128_32( v )   _mm256_shuffle_epi32( v, 0x39 )
 #define mm256_shufll128_32( v )   _mm256_shuffle_epi32( v, 0x93 )
 
-static inline __m256i mm256_shuflr128_x8( const __m256i v, const int c )
-{ return _mm256_alignr_epi8( v, v, c ); }
+// inline __m256i mm256_shuflr128_x8( const __m256i v, const int c )
+// { return _mm256_alignr_epi8( v, v, c ); }
+
+// #define __m256i mm256_shuflr128_x8(v, c) _mm256_alignr_epi8( v, v, c );
 
 // Swap 32 bit elements in each 64 bit lane.
 #define mm256_swap64_32( v )   _mm256_shuffle_epi32( v, 0xb1 )

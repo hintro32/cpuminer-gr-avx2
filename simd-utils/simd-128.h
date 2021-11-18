@@ -170,17 +170,19 @@ static inline __m128i mm128_neg1_fn()
 // Some examples of simple operations:
 
 // Insert 32 bit integer into v at element c and return modified v.
-static inline __m128i mm128_insert_32( const __m128i v, const uint32_t i,
-                                       const int c )
-{   return mm128_xim_32( v, mm128_mov32_128( i ), c<<4 ); }
+// static inline __m128i mm128_insert_32( const __m128i v, const uint32_t i,
+//                                        const int c )
+// {   return mm128_xim_32( v, mm128_mov32_128( i ), c<<4 ); }
 
-// Extract 32 bit element c from v and return as integer.
-static inline uint32_t mm128_extract_32( const __m128i v, const int c )
-{   return u32_mov128_32( mm128_xim_32( v, v, c<<6 ) ); }
+// // Extract 32 bit element c from v and return as integer.
+// static inline uint32_t mm128_extract_32( const __m128i v, const int c )
+// {   return u32_mov128_32( mm128_xim_32( v, v, c<<6 ) ); }
 
 // Clear (zero) 32 bit elements based on bits set in 4 bit mask.
-static inline __m128i mm128_mask_32( const __m128i v, const int m ) 
-{   return mm128_xim_32( v, v, m ); }
+// static inline __m128i mm128_mask_32( const __m128i v, const int m ) 
+// {   return mm128_xim_32( v, v, m ); }
+
+#define mm128_mask_32( v, m ) mm128_xim_32( v, v, m )
 
 // Move element i2 of v2 to element i1 of v1. For reference and convenience,
 // it's faster to precalculate the index.
@@ -420,8 +422,8 @@ static inline void memcpy_128( __m128i *dst, const __m128i *src, const int n )
 #if defined(__SSSE3__)
 
 // Rotate right by c bytes, no SSE2 equivalent.
-static inline __m128i mm128_shuflr_x8( const __m128i v, const int c )
-{ return _mm_alignr_epi8( v, v, c ); }
+// static inline __m128i mm128_shuflr_x8( const __m128i v, const int c )
+// { return _mm_alignr_epi8( v, v, c ); }
 
 //
 // Endian byte swap.
