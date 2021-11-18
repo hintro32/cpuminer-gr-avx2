@@ -616,8 +616,26 @@ void compress_big(const __m256i *M, const __m256i H[16], __m256i dH[16]) {
   qt[15] = _mm256_add_epi64(sb0(Wb15), H[0]);
 
   __m256i mj[16];
-  for (i = 0; i < 16; i++)
-    mj[i] = rol_off_64(M, i);
+  // for (i = 0; i < 16; i++)
+    // mj[i] = rol_off_64(M, i);
+
+mj[0] = rol_off_64(M, 0);
+mj[1] = rol_off_64(M, 1);
+mj[2] = rol_off_64(M, 2);
+mj[3] = rol_off_64(M, 3);
+mj[4] = rol_off_64(M, 4);
+mj[5] = rol_off_64(M, 5);
+mj[6] = rol_off_64(M, 6);
+mj[7] = rol_off_64(M, 7);
+mj[8] = rol_off_64(M, 8);
+mj[9] = rol_off_64(M, 9);
+mj[10] = rol_off_64(M, 10);
+mj[11] = rol_off_64(M, 11);
+mj[12] = rol_off_64(M, 12);
+mj[13] = rol_off_64(M, 13);
+mj[14] = rol_off_64(M, 14);
+mj[15] = rol_off_64(M, 15);
+
 
   qt[16] =
       add_elt_b(mj[0], mj[3], mj[10], H[7],
@@ -1028,8 +1046,24 @@ void compress_big_8way(const __m512i *M, const __m512i H[16], __m512i dH[16]) {
   qt[15] = _mm512_add_epi64(s8b0(W8b15), H[0]);
 
   __m512i mj[16];
-  for (i = 0; i < 16; i++)
-    mj[i] = rol8w_off_64(M, i);
+  // for (i = 0; i < 16; i++)
+  //   mj[i] = rol8w_off_64(M, i);
+mj[0] = rol8w_off_64(M, 0);
+mj[1] = rol8w_off_64(M, 1);
+mj[2] = rol8w_off_64(M, 2);
+mj[3] = rol8w_off_64(M, 3);
+mj[4] = rol8w_off_64(M, 4);
+mj[5] = rol8w_off_64(M, 5);
+mj[6] = rol8w_off_64(M, 6);
+mj[7] = rol8w_off_64(M, 7);
+mj[8] = rol8w_off_64(M, 8);
+mj[9] = rol8w_off_64(M, 9);
+mj[10] = rol8w_off_64(M, 10);
+mj[11] = rol8w_off_64(M, 11);
+mj[12] = rol8w_off_64(M, 12);
+mj[13] = rol8w_off_64(M, 13);
+mj[14] = rol8w_off_64(M, 14);
+mj[15] = rol8w_off_64(M, 15);
 
   qt[16] =
       add_elt_b8(mj[0], mj[3], mj[10], H[7],
